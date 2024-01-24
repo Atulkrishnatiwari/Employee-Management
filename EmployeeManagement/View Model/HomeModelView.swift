@@ -9,36 +9,62 @@ import Foundation
 import UIKit
 class HomeModelView
 {
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Employees.plist")
+//    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Employees.plist")
+    let userDefaults = UserDefaults.standard
     var employeeData = [Employee]()
-    func saveItem(_ tableView:UITableView)
+//    func saveItem()
+//    {
+//        let encoder = PropertyListEncoder()
+//        do
+//        {
+//            let data = try encoder.encode(employeeData)
+//            try data.write(to: dataFilePath!)
+//        }
+//        catch
+//        {
+//            print("Error During encoding Data\(error)")
+//        }
+//    }
+    func saveItem()
     {
-        let encoder = PropertyListEncoder()
         do
         {
-            let data = try encoder.encode(employeeData)
-            try data.write(to: dataFilePath!)
+            let encodeData = try JSONEncoder().encode(employeeData)
+            userDefaults.set(encodeData, forKey: "EmployeeList")
         }
         catch
         {
             print("Error During encoding Data\(error)")
         }
-        tableView.reloadData()
     }
+//    func loadDetails()
+//    {
+//        if let data = try? Data(contentsOf: dataFilePath!)
+//        {
+//            let decoder = PropertyListDecoder()
+//            do
+//            {
+//                employeeData = try decoder.decode([Employee].self, from: data)
+//            }
+//            catch
+//            {
+//                print("Error While decoding data\(error)")
+//            }
+//        }
+//    }
     func loadDetails()
     {
-        if let data = try? Data(contentsOf: dataFilePath!)
+        if let savedData = userDefaults.object(forKey: "EmployeeList") as? Data
         {
-            let decoder = PropertyListDecoder()
             do
             {
-                employeeData = try decoder.decode([Employee].self, from: data)
+                let employeeList = try JSONDecoder().decode([Employee].self, from: savedData)
+                employeeData = employeeList
             }
             catch
             {
                 print("Error While decoding data\(error)")
             }
-            
         }
     }
     func updateEmployeeData(_ newEmployee: Employee)

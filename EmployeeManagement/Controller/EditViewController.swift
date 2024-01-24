@@ -115,7 +115,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate & UI
         if let mainViewController = navigationController?.viewControllers.first as? HomeViewController
         {
             mainViewController.homeViewModel.updateEmployeeData(newEmployee)
-            mainViewController.homeViewModel.saveItem(mainViewController.tableView)
+            mainViewController.homeViewModel.saveItem()
             navigationController?.popViewController(animated: true)
         }
     }

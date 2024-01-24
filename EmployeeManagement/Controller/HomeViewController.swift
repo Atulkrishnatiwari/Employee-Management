@@ -36,7 +36,8 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         {
             homeViewModel.employeeData.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            homeViewModel.saveItem(tableView)
+            homeViewModel.saveItem()
+            tableView.reloadData()
             if(homeViewModel.employeeData.isEmpty)
             {
                 viewForEmptyState.isHidden=false
@@ -119,7 +120,8 @@ extension HomeViewController:UISearchBarDelegate,EmployeeData
     func fetchEmployee(employee: Employee)
     {
         self.homeViewModel.employeeData.append(employee)
-        self.homeViewModel.saveItem(self.tableView)
+        self.homeViewModel.saveItem()
+        tableView.reloadData()
     }
     
     //MARK: -for SearchField Filter Data and Searching content

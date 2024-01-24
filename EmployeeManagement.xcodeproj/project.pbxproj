@@ -143,13 +143,11 @@
 		A2A71B952B34522C0076D731 /* EmployeeManagement */ = {
 			isa = PBXGroup;
 			children = (
-				A2BB50852B3ED2DD00A5BA82 /* Home Cell */,
-				A2B85AFD2B3C54D100A100E4 /* Project Required File */,
 				A2BFB3922B35A14400AFEA6F /* Model */,
 				A2BFB38C2B359E9200AFEA6F /* View */,
 				A2B85AFA2B3C20EB00A100E4 /* View Model */,
 				A2BFB38D2B359EA000AFEA6F /* Controller */,
-				A2BFB3792B3588A600AFEA6F /* Tableview cell */,
+				A2B85AFD2B3C54D100A100E4 /* Project Required File */,
 				A2A71B962B34522C0076D731 /* AppDelegate.swift */,
 				A2A71B982B34522C0076D731 /* SceneDelegate.swift */,
 				A2A71B9F2B34522F0076D731 /* Assets.xcassets */,
@@ -225,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				A2A71B9C2B34522C0076D731 /* Main.storyboard */,
+				A2BB50852B3ED2DD00A5BA82 /* Home Cell */,
+				A2BFB3792B3588A600AFEA6F /* Tableview cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
